@@ -1,0 +1,172 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Tajawal', 'Arial', sans-serif;
+}
+
+body {
+    background-color: #1a3a63; /* اللون الأزرق الغامق */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    background-color: #2c5282; /* لون أزرق أفتح للحاوية */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    color: white; /* تغيير لون النص إلى الأبيض */
+}
+
+h1 {
+    color: #ffffff; /* تغيير لون العنوان إلى الأبيض ليتناسب مع الخلفية الزرقاء */
+    margin-bottom: 20px;
+}
+
+.game-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.difficulty, .mode {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+}
+
+select, button {
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: 1px solid #000;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    color: #000;
+}
+
+button {
+    background-color: #000000; /* اللون الأسود */
+    color: white;
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    margin: 20px 0;
+}
+
+button:hover {
+    background-color: #333333; /* لون أفتح قليلاً عند التحويم */
+}
+
+.status {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    height: 30px;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    margin: 0 auto;
+    max-width: 300px;
+}
+
+.cell {
+    background-color: #4a69bd; /* لون أزرق فاتح للخلايا */
+    border-radius: 5px;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.cell:hover {
+    background-color: #3c58a8; /* لون أغمق قليلاً عند التحويم */
+}
+
+.cell.x {
+    color: #ff9500; /* لون برتقالي للاعب X */
+}
+
+.cell.o {
+    color: #00ff95; /* لون أخضر فاتح للاعب O */
+}
+
+.scores {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.score {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.winning-cell {
+    background-color: #ffd700; /* لون ذهبي للخلايا الفائزة */
+    animation: pulse 0.8s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.cell.clicked {
+    transform: scale(0.9);
+    transition: transform 0.2s;
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.board-shake {
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+@media (max-width: 400px) {
+    .container {
+        padding: 15px;
+    }
+
+    .board {
+        max-width: 250px;
+    }
+
+    .cell {
+        font-size: 2rem;
+    }
+}
